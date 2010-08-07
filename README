@@ -1,1 +1,14 @@
-Nothing to see
+Git Guardian is designed to use Git the way it was not meant to.
+
+Problem:
+
+Many popular third party web applications have security issues which can be difficult to patch (Even using the most recent version). Not all of my friends are code masters and able to seal leaks - but attempt to be web masters anyways and as a result have very angry customers whos sites continue to get hacked.
+
+GIT GUARDIAN!
+
+After fixing another annoying code inject on a friends customers site I decided to setup a small cron job and Git on that web folder. The idea was simple: Clean the site, commit it all into git, cron check for any modified files. Feeling accomplished with myself for such a simple yet effective tool I realized this was a double edged sword.
+
+What happens when he legitametly uploads new content - he'll get bombarded with emails about changes
+What happens when there is an attack - I'll have to go in and run the git reset command (Sure I could teach him command line, SSH, and how to use Git - but I don't have time to teach people how to fish!)
+
+More and more what ifs swam in my head. It looks like it was time to build a web interface. So I figured I would release this project publically so no one would use it and could make snide remarks at how stupid this idea was.
