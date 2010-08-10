@@ -116,11 +116,11 @@ switch( $action )
 			}		
 		}
 
-		$view_file = "views/main.tpl";
+		$view_file = "views/login.tpl";
 		require_once("lib/template.php");
 	break;
 	default:
-		$view_file = "views/main.tpl";
+		$view_file = "views/login.tpl";
 		require_once("lib/template.php");
 	break;
 }
