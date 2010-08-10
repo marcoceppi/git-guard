@@ -79,17 +79,19 @@ function getReturnTo()
 		$_SERVER['SERVER_PORT'],
 		dirname($_SERVER['PHP_SELF'])
 	);*/
-	return getScheme() . "://" . $_SERVER['SERVER_NAME'] . getWebRoot() . "route.php?u=login/finish";
+	//return getScheme() . "://" . $_SERVER['SERVER_NAME'] . getWebRoot() . "index.php?mode=login&action=finish";
+	return "http://localhost/git-guard/index.php?mode=login&action=finish";
 }
 
 function getTrustRoot()
 {
-	return sprintf(
+	/*return sprintf(
 		"%s://%s/%s",
 		getScheme(), $_SERVER['SERVER_NAME'],
 		//$_SERVER['SERVER_PORT'],
 		str_replace("/", "", getWebRoot())
-	);
+	);*/
+	return "http://localhost/";
 }
 
 function getOpenIDURL()
