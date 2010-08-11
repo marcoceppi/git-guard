@@ -10,7 +10,16 @@ require_once("Auth/OpenID/PAPE.php");
 require_once("Database.php");
 include_once("inc/site.conf.inc");
 
-$db = new sql_db("localhost", "root", "!adasara0", "virtual_review", false);
+$db = connect_db();
+
+function connect_db()
+{
+	global $config;
+	
+	$db = new sql_db($config['db']['host'], $config['db']['user'], $config['db']['pass'], $config['db']['name'], false);
+	
+	return $db;
+}
 
 function getWebRoot( $echo = false )
 {
