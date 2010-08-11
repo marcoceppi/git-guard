@@ -1,15 +1,14 @@
 <?php
 
-$path_extra = dirname(dirname(dirname(__FILE__)));
-$path = ini_get('include_path');
-$path = $path_extra . PATH_SEPARATOR . $path;
-ini_set('include_path', $path);
+// Just a little smoke and mirrors.
+ini_set('include_path', dirname(dirname(__FILE__)) . PATH_SEPARATOR . ini_get('include_path'));
 
 require_once("Auth/OpenID/Consumer.php");
 require_once("Auth/OpenID/FileStore.php");
 require_once("Auth/OpenID/SReg.php");
 require_once("Auth/OpenID/PAPE.php");
 require_once("Database.php");
+include_once("inc/site.conf.inc");
 
 $db = new sql_db("localhost", "root", "!adasara0", "virtual_review", false);
 
@@ -27,13 +26,9 @@ function getWebRoot( $echo = false )
 
 function &getStore()
 {
-	/**
-	 * This is where the example will store its OpenID information.
-	 * You should change this path if you want the example store to be
-	 * created elsewhere.  After you're done playing with the example
-	 * script, you'll have to remove this directory manually.
-	 */
-	$store_path = "/tmp/_php_consumer_test";
+	global $config;
+
+	$store_path = $config['server']['tmp'] . "_php_consumer";
 
 	if( !file_exists($store_path) && !mkdir($store_path) )
 	{
@@ -72,6 +67,9 @@ function getScheme()
 
 function getReturnTo()
 {
+	global $config;
+
+	return $config['web']['url'] . $config['web']['path'] . "index.php?mode=login&action=finish";
 	/*return sprintf(
 		"%s://%s:%s%s/finish_auth.php",
 		getScheme(),
@@ -85,6 +83,9 @@ function getReturnTo()
 
 function getTrustRoot()
 {
+	global $config;
+	
+	return $config['web']['url'];
 	/*return sprintf(
 		"%s://%s/%s",
 		getScheme(), $_SERVER['SERVER_NAME'],
