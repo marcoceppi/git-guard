@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * I suppose something important should go here, and it will - all in
+ * due time my friends.
+ */
+
+$config['db']['host']  = ""; // MySQL Database Host
+$config['db']['user']  = ""; // MySQL Username
+$config['db']['pass']  = ""; // MySQL Password
+$config['db']['name']  = ""; // MySQL Database Name
+
+// Webwide Configuration
+$config['web']['url']  = ""; // Trailing slash is most important
+$config['web']['path'] = ""; // Trailing slash is most important
+
+// Serverwide Configruation
+$config['server']['path'] = "";
+$config['server']['tmp']  = "";
