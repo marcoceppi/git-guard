@@ -28,6 +28,11 @@ function session_store($key, $value)
 	$_SESSION[$key] = $value;
 }
 
+function getSites( $user_id )
+{
+	
+}
+
 function getWebRoot( $echo = false )
 {
 	if( $echo )
