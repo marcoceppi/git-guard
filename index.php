@@ -2,8 +2,8 @@
 
 require_once("lib/common.php");
 
-$mode = $_GET['mode'];
-$action = $_GET['action'];
+$mode = ( !isset($_REQUEST['mode']) ) ? "dashboard" : $_REQUEST['mode'];
+$action = ( isset($_REQUEST['action']) ) ? $_REQUEST['action'] : NULL;
 
 if( !is_null($mode) )
 {

@@ -115,9 +115,20 @@ switch( $action )
 				}
 			}		
 		}
+		
+		if( isset($error) || !is_null($error) )
+		{
+			$view_file = "views/login.tpl";
+			require_once("lib/template.php");
+		}
+		else
+		{
+			session_store('success', (( isset($success) ) ? $success : NULL));
+			session_store('message', (( isset($msg) ) ? $msg : NULL));
+			session_store('user', $user);
+			header("Location: index.php");
+		}
 
-		$view_file = "views/login.tpl";
-		require_once("lib/template.php");
 	break;
 	default:
 		$view_file = "views/login.tpl";
