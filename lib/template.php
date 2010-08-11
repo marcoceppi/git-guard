@@ -5,7 +5,7 @@ if( !$simple )
 	?>
 <html>
 <head>
-<title>Virtual Review<?php echo (isset($page_title)) ? " : " . $page_title : ""; ?></title>
+<title>Git Guardian<?php echo (isset($page_title)) ? " : " . $page_title : ""; ?></title>
 <link rel="stylesheet" type="text/css" href="<?php getWebRoot(true); ?>assets/css/main.css">
 </head>
 <body>
