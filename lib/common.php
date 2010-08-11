@@ -21,6 +21,13 @@ function connect_db()
 	return $db;
 }
 
+function session_store($key, $value)
+{
+	global $_SESSION;
+	
+	$_SESSION[$key] = $value;
+}
+
 function getWebRoot( $echo = false )
 {
 	if( $echo )
