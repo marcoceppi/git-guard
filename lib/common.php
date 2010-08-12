@@ -105,14 +105,7 @@ function getTrustRoot()
 
 function getOpenIDURL()
 {
-	if( empty($_GET['openid_identifier']) )
-	{
-		$error = "Expected an OpenID URL.";
-		include 'index.php';
-		exit(0);
-	}
-	
-	return ( !empty($_GET['openid_identifier']) ) ? $_GET['openid_identifier'] : FALSE;
+	return ( !empty($_REQUEST['openid_identifier']) ) ? $_REQUEST['openid_identifier'] : FALSE;
 }
 
 function escape($thing)
