@@ -10,7 +10,7 @@ switch( $action )
 		
 		if( !$openid )
 		{
-			$error = "Expected an OpenID URL.";
+			$html['error'] = "Expected an OpenID URL.";
 			build_template("views/login.tpl", "Login Failed", false, true);
 		}
 
@@ -20,7 +20,7 @@ switch( $action )
 		// No auth request means we can't begin OpenID.
 		if( !$auth_request )
 		{
-			$error = 'Authentication Error - not a valid OpenID.';
+			$html['error'] = 'Authentication Error - not a valid OpenID.';
 			build_template("views/login.tpl", "Login Failed", false, true);
 		}
 
@@ -44,7 +44,7 @@ switch( $action )
 			// If the redirect URL can't be built, display an error message.
 			if( Auth_OpenID::isFailure($redirect_url) )
 			{
-				$error = "Could not redirect to server: " . $redirect_url->message;
+				$html['error'] = "Could not redirect to server: " . $redirect_url->message;
 				build_template("views/login.tpl", "Login Failed", false, true);
 			}
 			else
@@ -63,7 +63,7 @@ switch( $action )
 			// otherwise, render the HTML.
 			if (Auth_OpenID::isFailure($form_html))
 			{
-				$error = "Could not redirect to server: " . $form_html->message;
+				$html['error'] = "Could not redirect to server: " . $form_html->message;
 				build_template("views/login.tpl", "Login Failed",  false, true);
 			}
 			else
@@ -83,12 +83,12 @@ switch( $action )
 		if( $response->status == Auth_OpenID_CANCEL )
 		{
 			// This means the authentication was cancelled.
-			$msg = 'Verification cancelled.';
+			$html['error'] = 'Verification cancelled.';
 		}
 		elseif( $response->status == Auth_OpenID_FAILURE )
 		{
 			// Authentication failed; display the error message.
-			$error = "OpenID authentication failed: " . $response->message;
+			$html['error'] = "OpenID authentication failed: " . $response->message;
 		}
 		elseif( $response->status == Auth_OpenID_SUCCESS )
 		{
@@ -114,7 +114,7 @@ switch( $action )
 				
 				if( !$db->sql_query($sql) )
 				{
-					$error = "Unable to dump your data into my base.";
+					$html['error'] = "Unable to dump your data into my base.";
 				}
 				else
 				{
@@ -123,14 +123,13 @@ switch( $action )
 			}		
 		}
 		
-		if( isset($error) || !is_null($error) )
+		if( isset($html['error']) || !is_null($html['error']) )
 		{
 			build_template("views/login.tpl", "Login Error", false, true);
 		}
 		else
 		{
-			session_store('success', (( isset($success) ) ? $success : NULL));
-			session_store('message', (( isset($msg) ) ? $msg : NULL));
+			session_store('html', array('sucess' => (( isset($success) ) ? $success : NULL), 'msg' => (( isset($msg) ) ? $msg : NULL)), false);
 			session_store('user', $user);
 			header("Location: index.php");
 		}
