@@ -24,7 +24,7 @@ function connect_db()
 function build_template( $view_file, $page_title = NULL, $simple = FALSE, $kill = FALSE )
 {
 	global $error, $msg, $success;
-	$view_file = "views/login.tpl";
+
 	require_once("lib/template.php");
 	
 	if( $kill )
