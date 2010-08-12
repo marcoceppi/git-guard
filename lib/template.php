@@ -6,7 +6,7 @@ if( !is_simple() && !$simple )
 <html>
 <head>
 <title>Git Guardian<?php echo (!is_null($page_title)) ? " : " . $page_title : ""; ?></title>
-<link rel="stylesheet" type="text/css" href="<?php getWebRoot(true); ?>assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="<?php getWebRoot(true); ?>assets/main.css">
 </head>
 <body>
 <div id="head"></div>

@@ -1,0 +1,182 @@
+*
+{
+	font-family: verdana,sans-serif;
+}
+
+body
+{
+	/*width: 50em;*/
+	text-align: center;
+	background-image: url('../img/bg.png');
+	background-repeat: repeat-x;
+	background-attachment: top left;
+	margin: 1em;
+}
+
+div
+{
+	padding: .5em;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center;
+}
+
+table
+{
+	margin: none;
+	padding: none;
+}
+
+hr
+{
+	border: 0;
+	color: #000;
+	background-color: #000;
+	height: 1px;
+	width: 97%;
+}
+
+h2
+{
+	padding: 0;
+	margin: 0;
+	color: #000;
+}
+
+img, img a:link, img a:hover, img a:visited
+{
+	border: 0;
+	vertical-align: top;
+	text-decoration: none;
+}
+
+small
+{
+	vertical-align: middle;
+}
+
+a, a:link, a:hover, a:visited
+{
+	text-decoration: underline;
+	color: #000000;
+	border: 0;
+}
+
+.alert
+{
+	border: 1px solid #e7dc2b;
+	background: #fff888;
+	margin: .5em;
+}
+
+.success
+{
+	border: 1px solid #669966;
+	background: #88ff88;
+	margin: .5em;
+}
+
+.error
+{
+	border: 1px solid #ff0000;
+	background: #ffaaaa;
+	margin: .5em;
+}
+
+.content
+{
+	margin-top: 1em;
+	margin: .5em;
+	padding-bottom: 0em;
+	border: 1px solid #777777;
+	/*background: #eeeeee;*/
+}
+
+.clear
+{
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+
+.small
+{
+	font-size: 8pt;
+	font-weight: normal;
+	font-style: normal;
+	color: #000000;
+	text-decoration: none;
+}
+
+.tiny
+{
+	font-size: 8pt;
+	font-weight: normal;
+	font-style: normal;
+	color: #000000;
+	text-decoration: none;
+}
+
+.left
+{
+	text-align:left;
+	margin-left: .5em;
+}
+
+div.right
+{
+	right: 0;
+	margin-right: 0;
+	/*width: 300px;*/
+	float:right;
+	text-align: right;
+	position: relative;
+}
+
+#you
+{
+	margin-left: 0;
+	width: 300px;
+	text-align: left;
+	margin-top: 0;
+}
+
+#container
+{
+	width: 100%;
+	text-align: center;
+	padding-top: 0;
+	/*margin-top: 150px;*/
+}
+
+#head
+{
+	margin-left: auto;
+	margin-right: auto;
+	width:70%;
+	height: 100px;
+	/*background-image: url('../img/head.png');
+	background-repeat: no-repeat;
+	background-attachment: center left;*/
+	padding: 0;
+}
+
+#footer
+{
+	margin-left: auto;
+	margin-right: auto;
+	width:100%;
+	height: 25px;
+	padding: 0;
+	position: absolute;
+	bottom:0;
+}
+
+#main
+{
+	width: 70%;
+	text-align:center;
+
+	margin-top: 0;
+	padding-bottom: 0em;
+}
