@@ -13,8 +13,6 @@ else
 
 print_r($user);
 
-$simple = $_REQUEST['simple'];
-
 switch( $action )
 {
 	default:

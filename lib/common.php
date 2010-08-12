@@ -21,6 +21,13 @@ function connect_db()
 	return $db;
 }
 
+function is_simple()
+{
+	global $_REQUEST;
+	
+	return ( isset($_REQUEST['simple']) && $_REQUEST['simple'] == true ) ? true : false;
+}
+
 function session_store($key, $value)
 {
 	global $_SESSION;
