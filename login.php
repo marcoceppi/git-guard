@@ -14,7 +14,8 @@ switch( $action )
 		// No auth request means we can't begin OpenID.
 		if( !$auth_request )
 		{
-			displayError("Authentication error; not a valid OpenID.");
+			$error = 'Authentication Error - not a valid OpenID.';
+			build_template("views/login.tpl", "Login Failed", false, true);
 		}
 
 		$sreg_request = Auth_OpenID_SRegRequest::build( array('nickname', 'email'), array('fullname', 'dob') );
@@ -39,7 +40,8 @@ switch( $action )
 			// If the redirect URL can't be built, display an error message.
 			if( Auth_OpenID::isFailure($redirect_url) )
 			{
-				displayError("Could not redirect to server: " . $redirect_url->message);
+				$error = "Could not redirect to server: " . $redirect_url->message;
+				build_template("views/login.tpl", "Login Failed", false, true);
 			}
 			else
 			{
@@ -57,7 +59,8 @@ switch( $action )
 			// otherwise, render the HTML.
 			if (Auth_OpenID::isFailure($form_html))
 			{
-				displayError("Could not redirect to server: " . $form_html->message);
+				$error = "Could not redirect to server: " . $form_html->message;
+				build_template("views/login.tpl", "Login Failed",  false, true);
 			}
 			else
 			{
@@ -118,8 +121,7 @@ switch( $action )
 		
 		if( isset($error) || !is_null($error) )
 		{
-			$view_file = "views/login.tpl";
-			require_once("lib/template.php");
+			build_template("views/login.tpl", "Login Error", false, true);
 		}
 		else
 		{
@@ -131,8 +133,7 @@ switch( $action )
 
 	break;
 	default:
-		$view_file = "views/login.tpl";
-		require_once("lib/template.php");
+		build_template("views/login.tpl", "Login");
 	break;
 }
 

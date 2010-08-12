@@ -21,6 +21,18 @@ function connect_db()
 	return $db;
 }
 
+function build_template( $view_file, $page_title = NULL, $simple = FALSE, $kill = FALSE )
+{
+	global $error, $msg, $success;
+	$view_file = "views/login.tpl";
+	require_once("lib/template.php");
+	
+	if( $kill )
+	{
+		die();
+	}
+}
+
 function is_simple()
 {
 	global $_REQUEST;
