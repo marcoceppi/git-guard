@@ -16,6 +16,6 @@ print_r($user);
 switch( $action )
 {
 	default:
-		build_template("views/dashboard.tpl");
+		build_template("views/dashboard.tpl", "Dashboard");
 	break;
 }
