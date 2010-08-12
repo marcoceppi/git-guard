@@ -12,6 +12,7 @@ require_once("HTML.php");
 include_once("inc/site.conf.inc");
 
 $db = connect_db();
+$html = $_SESSION['html'];
 
 function connect_db()
 {
@@ -41,11 +42,37 @@ function is_simple()
 	return ( isset($_REQUEST['simple']) && $_REQUEST['simple'] == true ) ? true : false;
 }
 
-function session_store($key, $value)
+function session_store($key, $value, $overwrite = true)
 {
 	global $_SESSION;
 	
-	$_SESSION[$key] = $value;
+	if( $overwrite )
+	{
+		$_SESSION[$key] = $value;
+	}
+	else
+	{
+		if( is_array($_SESSION[$key]) )
+		{
+			if( is_array($value) )
+			{
+				foreach( $value as $subkey => $val )
+				{
+					$_SESSION[$key][$subkey] = $val;
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	return true;			
 }
 
 function getSites( $user_id )
