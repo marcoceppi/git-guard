@@ -49,7 +49,12 @@ function session_store($key, $value)
 
 function getSites( $user_id )
 {
+	global $db;
 	
+	$sql = "SELECT * FROM `sites` WHERE `owner` = $user_id";
+	$results = $db->sql_fetchrowset($db->sql_query($sql));
+	
+	return $results;
 }
 
 function getWebRoot( $echo = false )
