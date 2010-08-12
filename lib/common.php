@@ -8,6 +8,7 @@ require_once("Auth/OpenID/FileStore.php");
 require_once("Auth/OpenID/SReg.php");
 require_once("Auth/OpenID/PAPE.php");
 require_once("Database.php");
+require_once("HTML.php");
 include_once("inc/site.conf.inc");
 
 $db = connect_db();
