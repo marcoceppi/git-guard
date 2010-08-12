@@ -25,8 +25,6 @@ switch( $action )
 			$auth_request->addExtension($sreg_request);
 		}
 
-		$policy_uris = null;
-		
 		// Redirect the user to the OpenID server for authentication.
 		// Store the token for this authentication so we can verify the
 		// response.
