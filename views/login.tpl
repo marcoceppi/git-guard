@@ -1,7 +1,5 @@
 <div class="content">
 	<div id="verify-form">
-	  <!-- <img src="http://localhost/danya.png">
-	  <img src="http://static.en.sftcdn.net/avatars/gallery/SoftHardware/google-logo.jpg"> -->
 	  <p></p>
 	  <form method="post" action="<?php getWebRoot(true); ?>">
 		OpenID URL:
