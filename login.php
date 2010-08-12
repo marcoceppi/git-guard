@@ -7,6 +7,12 @@ switch( $action )
 	case "try":
 		$openid = getOpenIDURL();
 		$consumer = getConsumer();
+		
+		if( !$openid )
+		{
+			$error = "Expected an OpenID URL.";
+			build_template("views/login.tpl", "Login Failed", false, true);
+		}
 
 		// Begin the OpenID authentication process.
 		$auth_request = $consumer->begin($openid);
