@@ -25,8 +25,16 @@ function connect_db()
 
 function build_template( $view_file, $page_title = NULL, $simple = FALSE, $kill = FALSE )
 {
-	global $error, $msg, $success;
+	global $html;
 
+	if( is_array($html) )
+	{
+		foreach( $html as $var => $val )
+		{
+			$$var = $val;
+		}
+	}
+	
 	require_once("lib/template.php");
 	
 	if( $kill )
