@@ -83,7 +83,14 @@ function session_store($key, $value, $overwrite = true)
 	return true;			
 }
 
-function getSites( $user_id )
+function session_get($key)
+{
+	global $_SESSION;
+	
+	return ( isset($_SESSION[$key]) ) ? $_SESSION[$key] : FALSE;
+}
+
+function getUserSites( $user_id )
 {
 	global $db;
 	
@@ -91,6 +98,16 @@ function getSites( $user_id )
 	$results = $db->sql_fetchrowset($db->sql_query($sql));
 	
 	return $results;
+}
+
+function getSite( $site_id )
+{
+	global $db;
+	
+	$sql = "SELECT * FROM `sites` WHERE `site_id` = $site_id";
+	$result = $db->sql_fetchrow($db->sql_query($sql));
+	
+	return $result;
 }
 
 function getWebRoot( $echo = false )
