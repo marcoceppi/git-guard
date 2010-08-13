@@ -3,9 +3,20 @@
 	<p class="clear"></p>
 </div>
 <p class="clear"></p>
-<div class="content">
 	<div>
-	  <p></p>
-	  
+	  <div style="float:left;" id="file_content" class="left content">
+		<span class="small"><span style="small_link">New</span> | <span style="small_link">Modified</span> | <span style="small_link">Deleted</span> | <span style="small_link">All</span></span><br>
+		<input type="checkbox"> wp-includes/query.php<br>
+		<input type="checkbox"> wp-includes/query.php<br>
+		<input type="checkbox"> wp-includes/query.php<br>
+		<input type="checkbox"> wp-includes/query.php<br>
+		<input type="checkbox"> wp-includes/post-thumbnail-template.php<br>
+	  </div>
+	  <div id="history_content" style="text-align:left" class="right content">
+		<span class="small"><span style="small_link">New</span> | <span style="small_link">Modified</span> | <span style="small_link">Deleted</span> | <span style="small_link">All</span></span><br>
+		3a6eaef... Marco Ceppi signed off<br>
+		a29c77e... Marco Ceppi<br>
+		6927403... Initial Commit<br>
+	  </div>
+	  <br class="clear">
 	</div>
-</div>
