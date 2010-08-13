@@ -11,6 +11,12 @@ require_once("Database.php");
 require_once("HTML.php");
 include_once("inc/site.conf.inc");
 
+define(GIT_MODIFIED, " --modified");
+define(GIT_STAGED, " --cached");
+define(GIT_DELETED, " --deleted --killed");
+define(GIT_ADDED, " --others");
+define(GIT_ALL, GIT_MODIFIED . GIT_ADDED . GIT_DELETED);
+
 $db = connect_db();
 $html = $_SESSION['html'];
 
