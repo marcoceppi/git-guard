@@ -11,8 +11,6 @@ else
 	$user = $_SESSION['user'];
 }
 
-print_r($user);
-
 $sites = getUserSites($user['user_id']);
 $html['sites_dropdown'] = new Dropdown("site_select");
 
