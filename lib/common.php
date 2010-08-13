@@ -90,6 +90,23 @@ function session_get($key)
 	return ( isset($_SESSION[$key]) ) ? $_SESSION[$key] : FALSE;
 }
 
+function truncate($input, $max = 25, $separator = "...")
+{
+	$strlength = strlen($input);
+	
+	if( $strlength >= $max )
+	{
+		$separatorlength = strlen($separator) ;
+		$maxlength = $max - $separatorlength;
+		$start = $maxlength / 2 ;
+		$trunc =  $strlength - $maxlength;
+		
+		return substr_replace($input, $separator, $start, $trunc);
+	}
+
+	return $input;
+}
+
 function getUserSites( $user_id )
 {
 	global $db;
