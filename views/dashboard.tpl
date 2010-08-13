@@ -12,7 +12,7 @@
 		<input type="checkbox"> wp-includes/query.php<br>
 		<input type="checkbox"> wp-includes/post-thumbnail-template.php<br>
 	  </div>
-	  <div id="history_content" style="text-align:left" class="right content">
+	  <div id="history_content" style="text-align:left; width:350px;" class="right content">
 		<span class="small"><span style="small_link">New</span> | <span style="small_link">Modified</span> | <span style="small_link">Deleted</span> | <span style="small_link">All</span></span><br>
 		3a6eaef... Marco Ceppi signed off<br>
 		a29c77e... Marco Ceppi<br>

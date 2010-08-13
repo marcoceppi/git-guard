@@ -136,7 +136,6 @@ div.right
 	margin-right: 0;
 	/*width: 300px;*/
 	float:right;
-	text-align: right;
 	position: relative;
 }
 
@@ -181,7 +180,7 @@ div.right
 
 #main
 {
-	width: 70%;
+	width: 800px;
 	text-align:center;
 
 	margin-top: 0;
