@@ -49,6 +49,31 @@ function build_template( $view_file, $page_title = NULL, $simple = FALSE, $kill 
 	}
 }
 
+function ls_files( $path, $modes = NULL )
+{
+	global $config;
+	
+	if( !is_null($modes) )
+	{
+		if( is_array() )
+		{
+			$mode = implode("", $modes);
+		}
+		else
+		{
+			$mode = $modes;
+		}
+	}
+	else
+	{
+		$mode = "";
+	}
+	
+	exec("cd $path && " . $config['server']['git'] . " ls-files -t " . $mode, $files);
+	
+	return ( is_array($files) ) ? $files : FALSE;
+}
+
 function is_simple()
 {
 	global $_REQUEST;
