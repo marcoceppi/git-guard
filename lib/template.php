@@ -7,6 +7,8 @@ if( !is_simple() && !$simple )
 <head>
 <title>Git Guardian<?php echo (!is_null($page_title)) ? " - " . $page_title : ""; ?></title>
 <link rel="stylesheet" type="text/css" href="<?php getWebRoot(true); ?>assets/main.css">
+<?php if( is_file($config['server']['path'] . "views/_$mode.js.tpl") )  { include($config['server']['path'] . "views/_$mode.js.tpl"); } ?>
+<?php if( is_file($config['server']['path'] . "views/_$mode.css.tpl") ) { include($config['server']['path'] . "views/_$mode.css.tpl"); } ?>
 </head>
 <body>
 <div id="head"></div>
