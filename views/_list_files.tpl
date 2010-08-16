@@ -1,4 +1,3 @@
-<span class="small"><span style="small_link">New</span> | <span style="small_link">Modified</span> | <span style="small_link">Deleted</span> | <span style="small_link">All</span></span><br>
 <?php
 foreach($files as $file)
 {
@@ -9,6 +8,9 @@ foreach($files as $file)
 			$class = "green";
 		break;
 		case 'C':
+			$class = "orange";
+		break;
+		case 'D':
 			$class = "red";
 		break;
 		default:
@@ -17,7 +19,7 @@ foreach($files as $file)
 	}
 	
 	?>
-<span class="<?= $class; ?>"><input type="checkbox"> <?= truncate($path); ?></span><br>
+<p class="simple <?= $class; ?>"><input type="checkbox" id="git-files" name="git-files"> <?= truncate($path, 45); ?></p> 
 	<?php
 }
 ?>
