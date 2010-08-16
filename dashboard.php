@@ -33,6 +33,7 @@ switch( $action )
 		if( $site = session_get('site') )
 		{
 			$html['site'] = $site;
+			$html['files'] = git_files($site['path'], GIT_ALL);
 		}
 		
 		build_template("dashboard", "Dashboard");
