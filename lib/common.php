@@ -50,13 +50,13 @@ function build_template( $view_file, $page_title = NULL, $is_simple = FALSE, $ki
 	}
 }
 
-function ls_files( $path, $modes = NULL )
+function git_files( $path, $modes = NULL )
 {
 	global $config;
 	
 	if( !is_null($modes) )
 	{
-		if( is_array() )
+		if( is_array($modes) )
 		{
 			$mode = implode("", $modes);
 		}
