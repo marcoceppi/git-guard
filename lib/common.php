@@ -75,6 +75,11 @@ function git_files( $path, $modes = NULL )
 	return ( is_array($files) ) ? $files : FALSE;
 }
 
+function git_log( $path )
+{
+	
+}
+
 function is_simple()
 {
 	global $_REQUEST;
