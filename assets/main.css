@@ -148,6 +148,13 @@ form
 	background: #fff888;
 }
 
+.simple
+{
+	margin:.2em;
+	padding:0;
+	display:block;
+}
+
 div.right
 {
 	right: 0;
