@@ -8,4 +8,4 @@ foreach($logs as $log)
 	<?php
 }
 ?>
-<span class="small"><span style="smlink">More</span> | <span style="smlink">More?</span></span><br>
+<span class="small"><span class="smlink" onclick="update_logs(<?= $log_start + 15; ?>)">More</span></span>

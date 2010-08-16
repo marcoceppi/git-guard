@@ -53,7 +53,8 @@ switch( $action )
 		$site = session_get('site');
 		$start = ( is_numeric($_REQUEST['start']) ) ? $_REQUEST['start'] : 0;
 		
-		$html['logs'] = array_slice(git_log($site['path']), $start, 25);
+		$html['logs'] = array_slice(git_log($site['path']), $start, 15);
+		sleep(2);
 		build_template("_dashboard_logs", NULL, TRUE);
 	break;
 	case 'switch':
@@ -65,7 +66,8 @@ switch( $action )
 		{
 			$html['site'] = $site;
 			$html['files'] = git_files($site['path'], GIT_ALL);
-			$html['logs'] = array_slice(git_log($site['path']), 0, 25);
+			$html['logs'] = array_slice(git_log($site['path']), 0, 15);
+			$html['log_start'] = 0;
 		}
 		
 		build_template("dashboard", "Dashboard");

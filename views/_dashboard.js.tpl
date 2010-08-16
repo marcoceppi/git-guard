@@ -28,6 +28,32 @@ function update_files(action)
 	});
 }
 
+function update_logs(start)
+{
+	show_loader('history_content');
+	new Ajax.Request('index.php' ,
+	{
+		method: "post",
+		parameters:
+		{
+			mode: 'dashboard',
+			action: 'log',
+			start: start,
+		},
+		onSuccess: function(transport)
+		{
+			var response = transport.responseText || "Could not recieve update.";
+			$('history_content').innerHTML = response;
+			hide_loader();
+		},
+		onFailure: function()
+		{
+			alert("Unable to fetch updates.");
+			hide_loader();
+		}
+	});
+}
+
 function show_loader(el)
 {
 	if( el == null )
