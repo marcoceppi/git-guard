@@ -32,7 +32,6 @@ else
 		<?php if( isset($msg) )     { print "<div class=\"alert\">$msg</div>"; } ?>
 		<?php if( isset($error) )   { print "<div class=\"error\">$error</div>"; } ?>
 		<?php if( isset($success) ) { print "<div class=\"success\">$success</div>"; } ?>
-		<p></p>
 		<?php include($view_file); ?>
 	<?php
 }
