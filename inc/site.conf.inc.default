@@ -17,3 +17,4 @@ $config['web']['path'] = ""; // Trailing slash is most important
 // Serverwide Configruation
 $config['server']['path'] = "";
 $config['server']['tmp']  = "";
+$config['server']['git']  = ""; // Path to git binary
