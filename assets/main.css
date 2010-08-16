@@ -130,6 +130,24 @@ form
 	text-align:left;
 }
 
+.green
+{
+	border: 1px solid #669966;
+	background: #88ff88;
+}
+
+.red
+{
+	border: 1px solid #ff0000;
+	background: #ffaaaa;
+}
+
+.orange
+{
+	border: 1px solid #e7dc2b;
+	background: #fff888;
+}
+
 div.right
 {
 	right: 0;
