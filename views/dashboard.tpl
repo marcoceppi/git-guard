@@ -4,13 +4,8 @@
 </div>
 <p class="clear"></p>
 	<div>
-	  <div style="float:left;" id="file_content" class="left content">
-		<span class="small"><span style="small_link">New</span> | <span style="small_link">Modified</span> | <span style="small_link">Deleted</span> | <span style="small_link">All</span></span><br>
-		<input type="checkbox"> wp-includes/query.php<br>
-		<input type="checkbox"> wp-includes/query.php<br>
-		<input type="checkbox"> wp-includes/query.php<br>
-		<input type="checkbox"> wp-includes/query.php<br>
-		<input type="checkbox"> wp-includes/post-thumbnail-template.php<br>
+	  <div style="float:left;width:370px;" id="file_content" class="left content">
+			<?php if(!empty($files)) { include("views/_list_files.tpl"); } ?> &nbsp;
 	  </div>
 	  <div id="history_content" style="text-align:left; width:350px;" class="right content">
 		<span class="small"><span style="small_link">New</span> | <span style="small_link">Modified</span> | <span style="small_link">Deleted</span> | <span style="small_link">All</span></span><br>
