@@ -9,9 +9,9 @@
 	  </div>
 	  <div id="history_content" style="text-align:left; width:350px;" class="right content">
 		<span class="small"><span style="small_link">New</span> | <span style="small_link">Modified</span> | <span style="small_link">Deleted</span> | <span style="small_link">All</span></span><br>
-		3a6eaef... Marco Ceppi signed off<br>
-		a29c77e... Marco Ceppi<br>
-		6927403... Initial Commit<br>
+		3a6eaef... Marco Ceppi signed off on<br>
+		a29c77e... Marco Ceppi signed off on<br>
+		6927403... Git Guard tracking started<br>
 	  </div>
 	  <br class="clear">
 	</div>
