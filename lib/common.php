@@ -77,7 +77,11 @@ function git_files( $path, $modes = NULL )
 
 function git_log( $path )
 {
+	global $config;
 	
+	exec("cd $path && " . $config['server']['git'] . " log --abbrev-commit --pretty=oneline", $log);
+	
+	return ( is_array($log) ) ? $log : FALSE;
 }
 
 function is_simple()
