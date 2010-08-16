@@ -46,6 +46,7 @@ switch( $action )
 		}
 		
 		$html['files'] = git_files($site['path'], $file_mode);
+		sleep(2);
 		build_template("_dashboard_files", NULL, TRUE);
 	break;
 	case 'switch':
