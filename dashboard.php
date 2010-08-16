@@ -46,7 +46,7 @@ switch( $action )
 		}
 		
 		$html['files'] = git_files($site['path'], $file_mode);
-		build_template("_list_files", NULL, TRUE);
+		build_template("_dashboard_files", NULL, TRUE);
 	break;
 	case 'switch':
 		$site_id = $_REQUEST['site_select'];
