@@ -15,6 +15,6 @@ $config['web']['url']  = ""; // Trailing slash is most important
 $config['web']['path'] = ""; // Trailing slash is most important
 
 // Serverwide Configruation
-$config['server']['path'] = "";
-$config['server']['tmp']  = "";
+$config['server']['path'] = ""; // Path to Git Guards install
+$config['server']['tmp']  = ""; // Server's tmp directory
 $config['server']['git']  = ""; // Path to git binary
