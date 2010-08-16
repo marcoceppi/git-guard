@@ -1,6 +1,6 @@
 <?php
 
-if( !is_simple() && !$simple )
+if( !is_simple() && !$is_simple )
 {
 	?>
 <html>

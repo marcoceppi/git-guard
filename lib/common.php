@@ -29,7 +29,7 @@ function connect_db()
 	return $db;
 }
 
-function build_template( $view_file, $page_title = NULL, $simple = FALSE, $kill = FALSE )
+function build_template( $view_file, $page_title = NULL, $is_simple = FALSE, $kill = FALSE )
 {
 	global $html;
 
