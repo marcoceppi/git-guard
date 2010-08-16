@@ -25,6 +25,29 @@ foreach( $sites as $site )
 
 switch( $action )
 {
+	case 'files':
+		$site = session_get('site');
+		$type = $_REQUEST['type'];
+		
+		switch( $type )
+		{
+			case 'del':
+				$file_mode = GIT_DELETED;
+			break;
+			case 'new':
+				$file_mode = GIT_ADDED;
+			break;
+			case 'mod':
+				$file_mode = GIT_MODIFIED;
+			break;
+			default:
+				$file_mode = GIT_ALL;
+			break;
+		}
+		
+		$html['files'] = git_files($site['path'], $file_mode);
+		build_template("_list_files", NULL, TRUE);
+	break;
 	case 'switch':
 		$site_id = $_REQUEST['site_select'];
 		$site = getSite($site_id);
