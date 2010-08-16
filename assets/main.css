@@ -155,6 +155,12 @@ form
 	display:block;
 }
 
+.smlink
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 div.right
 {
 	right: 0;
