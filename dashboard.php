@@ -49,6 +49,13 @@ switch( $action )
 		sleep(2);
 		build_template("_dashboard_files", NULL, TRUE);
 	break;
+	case 'log':
+		$site = session_get('site');
+		$start = ( is_numeric($_REQUEST['start']) ) ? $_REQUEST['start'] : 0;
+		
+		$html['logs'] = array_slice(git_log($site['path']), $start, 25);
+		build_template("_dashboard_logs", NULL, TRUE);
+	break;
 	case 'switch':
 		$site_id = $_REQUEST['site_select'];
 		$site = getSite($site_id);
@@ -58,6 +65,7 @@ switch( $action )
 		{
 			$html['site'] = $site;
 			$html['files'] = git_files($site['path'], GIT_ALL);
+			$html['logs'] = array_slice(git_log($site['path']), 0, 25);
 		}
 		
 		build_template("dashboard", "Dashboard");
