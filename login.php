@@ -11,7 +11,7 @@ switch( $action )
 		if( !$openid )
 		{
 			$html['error'] = "Expected an OpenID URL.";
-			build_template("views/login.tpl", "Login Failed", false, true);
+			build_template("login", "Login Failed", false, true);
 		}
 
 		// Begin the OpenID authentication process.
@@ -21,7 +21,7 @@ switch( $action )
 		if( !$auth_request )
 		{
 			$html['error'] = 'Authentication Error - not a valid OpenID.';
-			build_template("views/login.tpl", "Login Failed", false, true);
+			build_template("login", "Login Failed", false, true);
 		}
 
 		$sreg_request = Auth_OpenID_SRegRequest::build( array('nickname', 'email'), array('fullname', 'dob') );
@@ -45,7 +45,7 @@ switch( $action )
 			if( Auth_OpenID::isFailure($redirect_url) )
 			{
 				$html['error'] = "Could not redirect to server: " . $redirect_url->message;
-				build_template("views/login.tpl", "Login Failed", false, true);
+				build_template("login", "Login Failed", false, true);
 			}
 			else
 			{
@@ -64,7 +64,7 @@ switch( $action )
 			if (Auth_OpenID::isFailure($form_html))
 			{
 				$html['error'] = "Could not redirect to server: " . $form_html->message;
-				build_template("views/login.tpl", "Login Failed",  false, true);
+				build_template("login", "Login Failed",  false, true);
 			}
 			else
 			{
@@ -125,7 +125,7 @@ switch( $action )
 		
 		if( isset($html['error']) || !is_null($html['error']) )
 		{
-			build_template("views/login.tpl", "Login Error", false, true);
+			build_template("login", "Login Error", false, true);
 		}
 		else
 		{
@@ -136,7 +136,7 @@ switch( $action )
 
 	break;
 	default:
-		build_template("views/login.tpl", "Login");
+		build_template("login", "Login");
 	break;
 }
 

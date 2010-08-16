@@ -35,6 +35,6 @@ switch( $action )
 			$html['site'] = $site;
 		}
 		
-		build_template("views/dashboard.tpl", "Dashboard");
+		build_template("dashboard", "Dashboard");
 	break;
 }

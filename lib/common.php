@@ -41,6 +41,7 @@ function build_template( $view_file, $page_title = NULL, $is_simple = FALSE, $ki
 		}
 	}
 	
+	$view_file = "views/$view_file.tpl";
 	require_once("lib/template.php");
 	
 	if( $kill )
