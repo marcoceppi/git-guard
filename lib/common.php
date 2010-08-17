@@ -84,6 +84,56 @@ function git_log( $path )
 	return ( is_array($log) ) ? $log : FALSE;
 }
 
+function git_stage( $path, $files )
+{
+	global $config;
+	
+	if( is_array($files) )
+	{
+		$files = implode(" ", $files);
+	}
+	
+	exec("cd $path && " . $config['server']['git'] . " add $files");
+}
+
+function git_commit( $path, $files, $message )
+{
+	global $config;
+	
+	if( is_array($files) )
+	{
+		$files = implode(" ", $files);
+	}
+	
+	exec("cd $path && " . $config['server']['git'] . " commit -m \"$message\" $files");
+}
+
+function git_checkout( $path, $files )
+{
+	global $config;
+	
+	if( is_array($files) )
+	{
+		$files = implode(" ", $files);
+	}
+	
+	exec("cd $path && " . $config['server']['git'] . " checkout -- $files");
+}
+
+function git_diff( $path, $files )
+{
+	global $config;
+	
+	if( is_array($files) )
+	{
+		$files = implode(" ", $files);
+	}
+	
+	exec("cd $path && " . $config['server']['git'] . " diff -- $files", $output);
+	
+	return $output;
+}
+
 function is_simple()
 {
 	global $_REQUEST;
