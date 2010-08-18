@@ -75,6 +75,15 @@ function git_files( $path, $modes = NULL )
 	return ( is_array($files) ) ? $files : FALSE;
 }
 
+function git_cached( $path )
+{
+	global $config;
+	
+	exec("cd $path && " . $config['server']['git'] . " diff --cached --name-status " . $mode, $files);
+	
+	return $files;
+}
+
 function git_log( $path )
 {
 	global $config;
