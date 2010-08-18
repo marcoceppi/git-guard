@@ -7,7 +7,7 @@
 	  <div id="history_content" style="text-align:left; width:350px;" class="right content">
 			<?php if(!empty($logs)) { include('views/_dashboard_logs.tpl'); } ?> &nbsp;
 	  </div>
-	  <div style="float:left;width:370px;" id="file_content" class="left content">
+	  <div style="float:left;width:370px;" id="files_content" class="left content">
 			<?php if(!empty($files)) { include('views/_dashboard_files.tpl'); } ?> &nbsp;
 	  </div>
 	  <div style="float:left;width:370px;" id="stage_content" class="left content">
