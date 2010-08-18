@@ -40,6 +40,10 @@ switch( $action )
 			case 'mod':
 				$file_mode = GIT_MODIFIED;
 			break;
+			case 'staged':
+				$file_mode = GIT_STAGED;
+				$html['staged'] = git_cached($site['path']);
+			break;
 			default:
 				$file_mode = GIT_ALL;
 			break;
