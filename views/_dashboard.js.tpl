@@ -2,9 +2,9 @@
 <script type="text/javascript" src="assets/scriptaculous.js?effects"></script>
 <script type="text/javascript" language="Javascript">
 
-function update_files(action)
+function update_files(action, content)
 {
-	show_loader('file_content');
+	show_loader(content+'_content');
 	new Ajax.Request('index.php' ,
 	{
 		method: "post",
@@ -13,11 +13,12 @@ function update_files(action)
 			mode: 'dashboard',
 			action: 'files',
 			type: action,
+			container: content
 		},
 		onSuccess: function(transport)
 		{
 			var response = transport.responseText || "Could not recieve update.";
-			$('file_content').innerHTML = response;
+			$(content+'_content').innerHTML = response;
 			hide_loader();
 		},
 		onFailure: function()
@@ -54,6 +55,11 @@ function update_logs(start)
 	});
 }
 
+function execute_action()
+{
+	update_files('staged', 'stage');
+}
+
 function show_loader(el)
 {
 	if( el == null )
@@ -86,5 +92,5 @@ function hide_loader()
 }
 
 	
-//Event.observe(window, 'load', show_loader);
+Event.observe(window, 'load', execute_action);
 </script>
