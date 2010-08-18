@@ -28,6 +28,7 @@ switch( $action )
 	case 'files':
 		$site = session_get('site');
 		$type = $_REQUEST['type'];
+		$container = ( isset($_REQUEST['container']) ) ? $_REQUEST['container'] : "files";
 		
 		switch( $type )
 		{
@@ -51,7 +52,7 @@ switch( $action )
 		
 		$html['files'] = git_files($site['path'], $file_mode);
 		sleep(2);
-		build_template("_dashboard_files", NULL, TRUE);
+		build_template("_dashboard_$container", NULL, TRUE);
 	break;
 	case 'log':
 		$site = session_get('site');
