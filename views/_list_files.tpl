@@ -19,7 +19,7 @@ foreach($files as $file)
 	}
 	
 	?>
-<p class="simple <?= $class; ?>"><input type="checkbox" id="git-files" name="git-files"> <?= truncate($path, 45); ?></p> 
+<p class="simple <?= $class; ?>"><input type="checkbox" id="git-files[]" name="git-files[]" value="<?= $path; ?>"> <?= truncate($path, 45); ?></p> 
 	<?php
 }
 ?>

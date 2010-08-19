@@ -54,6 +54,32 @@ switch( $action )
 		sleep(2);
 		build_template("_dashboard_$container", NULL, TRUE);
 	break;
+	case 'execute':
+		$command = $_REQUEST['cmd'];
+		$files = explode(",", $_REQUEST['file_list']);
+		print_r($files);
+		switch( $command )
+		{
+			case 'commitall':
+				
+			break;
+			case 'commit':
+				git_commit($site['path'], $files, "Approved by: " . $user['name']);
+			break;
+			case 'stage':
+				echo "hy";
+				git_stage($site['path'], $files);
+			break;
+			case 'diff':
+				git_diff($site['path'], $files);
+			break;
+			case 'checkout':
+				git_checkout($site['path'], $files);
+			break;
+			default:
+			break;
+		}
+	break;
 	case 'log':
 		$site = session_get('site');
 		$start = ( is_numeric($_REQUEST['start']) ) ? $_REQUEST['start'] : 0;

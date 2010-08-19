@@ -55,9 +55,61 @@ function update_logs(start)
 	});
 }
 
-function execute_action()
+function build_list(el)
 {
-	update_files('staged', 'stage');
+	var el_arr = new Array();
+	
+	boxes = $(el).select('input[type=checkbox]');
+	i = 0;
+	
+	boxes.each( function(e)
+	{
+		if( e.checked )
+		{
+			el_arr[i] = e.value;
+			i++;
+		}
+	});
+	
+	return el_arr;
+}
+
+function execute_action(command)
+{
+	command = $('git-action').value;
+	$('tmp').value = build_list('files_content');
+	new Ajax.Request('index.php' ,
+	{
+		method: "post",
+		parameters:
+		{
+			mode: 'dashboard',
+			action: 'execute',
+			cmd: command,
+			file_list: $('tmp').value
+		},
+		onSuccess: function(transport)
+		{
+			if( command != "diff" )
+			{
+				update_files('all', 'files');
+				
+				if( command == "stage" )
+				{
+					update_files('staged', 'stage');
+				}
+			}
+			else
+			{
+				var response = transport.responseText || "Could not recieve update.";
+				$('files_content').innerHTML = response;
+			}
+		},
+		onFailure: function()
+		{
+			alert("Unable to fetch updates.");
+		}
+	});
 }
 
 function show_loader(el)
@@ -92,5 +144,5 @@ function hide_loader()
 }
 
 	
-Event.observe(window, 'load', execute_action);
+//Event.observe(window, 'load', execute_action);
 </script>
