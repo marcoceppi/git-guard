@@ -114,6 +114,8 @@ function git_commit( $path, $files, $message )
 		$files = implode(" ", $files);
 	}
 	
+	git_stage( $path, $files );
+	
 	exec("cd $path && " . $config['server']['git'] . " commit -m \"$message\" $files");
 }
 
