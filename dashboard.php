@@ -16,6 +16,8 @@ print_r($user);
 */
 
 $sites = getUserSites($user['user_id']);
+$site = session_get('site');
+
 $html['sites_dropdown'] = new Dropdown("site_select");
 
 foreach( $sites as $site )
@@ -26,7 +28,6 @@ foreach( $sites as $site )
 switch( $action )
 {
 	case 'files':
-		$site = session_get('site');
 		$type = $_REQUEST['type'];
 		$container = ( isset($_REQUEST['container']) ) ? $_REQUEST['container'] : "files";
 		
@@ -81,7 +82,6 @@ switch( $action )
 		}
 	break;
 	case 'log':
-		$site = session_get('site');
 		$start = ( is_numeric($_REQUEST['start']) ) ? $_REQUEST['start'] : 0;
 		
 		$html['logs'] = array_slice(git_log($site['path']), $start, 15);
@@ -93,7 +93,7 @@ switch( $action )
 		$site = getSite($site_id);
 		session_store('site', $site);
 	default:
-		if( $site = session_get('site') )
+		if( $site !== FALSE )
 		{
 			$html['site'] = $site;
 			$html['files'] = git_files($site['path'], GIT_ALL);
