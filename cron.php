@@ -1,9 +1,9 @@
 <?php
 
 require_once("lib/common.php");
-// This needs to come from the db - whenever that gets implemented
-$guardians = array();
-$guardians[] = "/home/marco/guardme";
+
+$sql = "SELECT s.name, s.path, u.name as username, u.email FROM `sites` as s LEFT JOIN `users` as u on s.owner = u.user_id WHERE `site_id` > 0";
+$users = $db->sql_fetchrowset($db->sql_query($sql));
 
 function get_code( $key )
 {
@@ -23,10 +23,9 @@ function get_code( $key )
 		break;
 	}
 }
-
-foreach( $guardians as $check_path )
+foreach( $users as $user )
 {
-	$results = git_files($check_path, GIT_ALL);
+	$results = git_files($user['path'], GIT_ALL);
 
 	if( is_array($results) )
 	{
