@@ -1,5 +1,6 @@
 <?php
 
+require_once("lib/common.php");
 // This needs to come from the db - whenever that gets implemented
 $guardians = array();
 $guardians[] = "/home/marco/guardme";
@@ -25,7 +26,7 @@ function get_code( $key )
 
 foreach( $guardians as $check_path )
 {
-	exec("cd $check_path && git ls-files --modified --others --deleted -t", $results);
+	$results = git_files($check_path, GIT_ALL);
 
 	if( is_array($results) )
 	{
@@ -33,6 +34,7 @@ foreach( $guardians as $check_path )
 		{
 			list($msg, $file) = explode(" ", $status, 2);
 			echo get_code($msg) . " - $check_path/$file\n";
+			
 		}
 	}
 }
