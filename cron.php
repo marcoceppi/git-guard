@@ -23,6 +23,7 @@ function get_code( $key )
 		break;
 	}
 }
+echo "<pre>";
 foreach( $users as $user )
 {
 	$results = git_files($user['path'], GIT_ALL);
@@ -32,10 +33,10 @@ foreach( $users as $user )
 		foreach( $results as $status )
 		{
 			list($msg, $file) = explode(" ", $status, 2);
-			echo get_code($msg) . " - $check_path/$file\n";
+			echo $user['name'] . " " . get_code($msg) . " - $check_path/$file\n";
 			
 		}
 	}
 }
-
+echo "</pre>";
 ?>
