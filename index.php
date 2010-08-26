@@ -7,6 +7,15 @@ require_once("lib/common.php");
 $mode = ( !isset($_REQUEST['mode']) ) ? "dashboard" : $_REQUEST['mode'];
 $action = ( isset($_REQUEST['action']) ) ? $_REQUEST['action'] : NULL;
 
+if( !isset($_SESSION['user']) && $mode != "login" )
+{
+	$mode = "login";
+}
+else
+{
+	$user = $_SESSION['user'];
+}
+
 if( !is_null($mode) )
 {
 	if( is_file("$mode.php") )
