@@ -26,4 +26,4 @@ foreach($staged as $file)
 	<?php
 }
 ?>
-<p class="small"><button class="small">Commit All</button>&nbsp;Key: <span class="green">New File</span> <span class="orange">Modified</span> <span class="red">Deleted</span></p>
+<p class="small"><button class="small" onClick="execute_action('commitall');">Commit All</button>&nbsp;Key: <span class="green">New File</span> <span class="orange">Modified</span> <span class="red">Deleted</span></p>

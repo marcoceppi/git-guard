@@ -76,8 +76,16 @@ function build_list(el)
 
 function execute_action(command)
 {
-	command = $('git-action').value;
-	$('tmp').value = build_list('files_content');
+	if( command == null )
+	{
+		command = $('git-action').value;
+		$('tmp').value = build_list('files_content');
+	}
+	else
+	{
+		$('tmp').value = '';
+	}
+	
 	new Ajax.Request('index.php' ,
 	{
 		method: "post",

@@ -47,7 +47,15 @@ switch( $action )
 		switch( $command )
 		{
 			case 'commitall':
+				function _cleanFiles(&$path)
+				{
+					list($meh, $path) = explode("\t", $path, 2);
+				}
 				
+				$files = git_cached($site['path']);
+				$files = array_walk($files, '_cleanFiles');
+
+				git_commit($site['path'], $files);
 			break;
 			case 'commit':
 				git_commit($site['path'], $files, "Approved by: " . $user['name']);
