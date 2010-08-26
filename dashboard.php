@@ -84,6 +84,7 @@ switch( $action )
 			$html['files'] = git_files($site['path'], GIT_ALL);
 			$html['logs'] = array_slice(git_log($site['path']), 0, 15);
 			$html['log_start'] = 0;
+			$html['staged'] = git_cached($site['path']);
 		}
 		
 		build_template("dashboard", "Dashboard");
