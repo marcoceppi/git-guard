@@ -113,7 +113,7 @@ function getUserSites( $user_id )
 {
 	global $db;
 	
-	$sql = "SELECT * FROM `sites` WHERE `owner` = $user_id";
+	$sql = "SELECT s.* FROM `users_sites` us JOIN `sites` s ON s.`site_id` = us.`site_id` WHERE us.`user_id` = $user_id";
 	$results = $db->sql_fetchrowset($db->sql_query($sql));
 	
 	return $results;
