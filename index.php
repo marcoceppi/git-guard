@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once("lib/common.php");
 
 $mode = ( !isset($_REQUEST['mode']) ) ? "dashboard" : $_REQUEST['mode'];

@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 switch( $action )
 {
 	case "try":
