@@ -52,7 +52,8 @@ switch( $action )
 					list($meh, $path) = explode("\t", $path, 2);
 				}
 				
-				$files = array_walk(git_cached($site['path']), '_cleanFiles');
+				$files = git_cached($site['path']);
+				$files = array_walk($files, '_cleanFiles');
 
 				git_commit($site['path'], $files);
 			break;
