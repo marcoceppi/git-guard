@@ -46,12 +46,15 @@ switch( $action )
 		switch( $command )
 		{
 			case 'commitall':
-				function _cleanFiles(&$path)
+				function _cleanFiles(&$item1, $key)
 				{
-					list($meh, $path) = explode("\t", $path, 2);
+					$foo = explode("\t", $item1, 2);
+					
+					$item1 = $foo[1];
 				}
 				
 				$files = git_cached($site['path']);
+				print_r($files);
 				$files = array_walk($files, '_cleanFiles');
 				print_r($files);
 
