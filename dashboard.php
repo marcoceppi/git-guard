@@ -55,13 +55,12 @@ switch( $action )
 				$files = git_cached($site['path']);
 				$files = array_walk($files, '_cleanFiles');
 
-				git_commit($site['path'], $files);
+				git_commit($site['path'], $files, "Approved by: " . $user['name']);
 			break;
 			case 'commit':
 				git_commit($site['path'], $files, "Approved by: " . $user['name']);
 			break;
 			case 'stage':
-				echo "hy";
 				git_stage($site['path'], $files);
 			break;
 			case 'diff':
