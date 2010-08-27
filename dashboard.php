@@ -37,7 +37,6 @@ switch( $action )
 		}
 		
 		$html['files'] = git_files($site['path'], $file_mode);
-		sleep(2);
 		build_template("_dashboard_$container", NULL, TRUE);
 	break;
 	case 'execute':
@@ -78,7 +77,6 @@ switch( $action )
 		$start = ( is_numeric($_REQUEST['start']) ) ? $_REQUEST['start'] : 0;
 		
 		$html['logs'] = array_slice(git_log($site['path']), $start, 15);
-		sleep(2);
 		build_template("_dashboard_logs", NULL, TRUE);
 	break;
 	case 'switch':
