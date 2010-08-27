@@ -43,7 +43,7 @@ switch( $action )
 	case 'execute':
 		$command = $_REQUEST['cmd'];
 		$files = explode(",", $_REQUEST['file_list']);
-		print_r($files);
+		
 		switch( $command )
 		{
 			case 'commitall':
@@ -54,6 +54,7 @@ switch( $action )
 				
 				$files = git_cached($site['path']);
 				$files = array_walk($files, '_cleanFiles');
+				print_r($files);
 
 				git_commit($site['path'], $files, "Approved by: " . $user['name']);
 			break;
