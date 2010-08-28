@@ -72,7 +72,7 @@ function git_commit( $path, $files, $message )
 	
 	git_stage( $path, $files );
 	
-	exec("cd $path && " . $config['server']['git'] . " commit -m \"$message\" $files");
+	exec('cd ' . $path . ';HOME=/home/4218/users/.home/ ' . $config['server']['git'] . ' commit -m "' . $message . '" --author="Git Guardian <guardian@seacrow.org>" -- ' . $files);
 }
 
 function git_checkout( $path, $files )
