@@ -102,9 +102,14 @@ function execute_action(command)
 			{
 				update_files('all', 'files');
 				
-				if( command == "stage" )
+				if( command == "stage" || command == "commitall" )
 				{
 					update_files('staged', 'stage');
+				}
+				
+				if( command == "commit" || command == "commitall" )
+				{
+					update_log();
 				}
 			}
 			else
