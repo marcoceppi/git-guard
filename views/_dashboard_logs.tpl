@@ -8,4 +8,21 @@ foreach($logs as $log)
 	<?php
 }
 ?>
-<span class="small"><span class="smlink" onclick="update_logs(<?= $log_start + 15; ?>)">More</span></span>
+<span class="small">
+<?php
+if( $logs_start > 0 )
+{
+	$new_start = ( ($logs_start - 15) <= 0 ) ? 0 : ($logs_start - 15);
+	?>
+	<span class="smlink" onclick="update_logs(<?= $new_start; ?>)">Newer</span>
+	<?php
+}
+
+if( $logs_more )
+{
+	?>
+	<span class="smlink" onclick="update_logs(<?= $logs_start + 15; ?>)">Older</span>
+	<?php
+}
+?>
+</span>

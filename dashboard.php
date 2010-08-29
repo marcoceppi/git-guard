@@ -83,8 +83,14 @@ switch( $action )
 	break;
 	case 'log':
 		$start = ( is_numeric($_REQUEST['start']) ) ? $_REQUEST['start'] : 0;
+		$logs = git_log($site['path']);
+		$html['logs'] = array_slice($logs, $start, 15);
+		$html['logs_start'] = $start;
 		
-		$html['logs'] = array_slice(git_log($site['path']), $start, 15);
+		if( count($logs) > 15 )
+		{
+			$html['logs_more'] = true;
+		}
 		build_template("_dashboard_logs", NULL, TRUE);
 	break;
 	case 'switch':
