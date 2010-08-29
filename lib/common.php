@@ -13,7 +13,6 @@ require_once("HTML.php");
 include_once("inc/site.conf.inc");
 
 $db = connect_db();
-$html = $_SESSION['html'];
 
 function connect_db()
 {
