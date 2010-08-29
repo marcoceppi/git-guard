@@ -5,7 +5,7 @@
 <p class="clear"></p>
 	<div>
 	  <div id="history_content" style="text-align:left; width:350px;" class="right content">
-			<?php if(!empty($logs)) { include('views/_dashboard_logs.tpl'); } ?> &nbsp;
+			<script type="text/javascript" language="javascript">update_logs();</script>
 	  </div>
 	  <div style="float:left;width:370px;" id="files_content" class="left content">
 			<?php if(!empty($files)) { include('views/_dashboard_files.tpl'); } ?> &nbsp;

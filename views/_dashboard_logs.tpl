@@ -14,7 +14,7 @@ if( $logs_start > 0 )
 {
 	$new_start = ( ($logs_start - 15) <= 0 ) ? 0 : ($logs_start - 15);
 	?>
-	<span class="smlink" onclick="update_logs(<?= $new_start; ?>)">Newer</span>
+	<span class="smlink" onclick="update_logs(<?= $new_start; ?>)">Newer</span> ::
 	<?php
 }
 
