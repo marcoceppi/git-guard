@@ -127,7 +127,7 @@ switch( $action )
 		}
 		else
 		{
-			session_store('html', array('sucess' => (( isset($success) ) ? $success : NULL), 'msg' => (( isset($msg) ) ? $msg : NULL)), false);
+			session_store('html', array('sucess' => (( isset($success) ) ? $success : NULL), 'msg' => (( isset($msg) ) ? $msg : NULL)));
 			session_store('user', $user);
 			header("Location: index.php");
 		}
