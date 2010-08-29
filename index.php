@@ -7,6 +7,7 @@ require_once("lib/common.php");
 $mode = ( !isset($_REQUEST['mode']) ) ? "dashboard" : $_REQUEST['mode'];
 $action = ( isset($_REQUEST['action']) ) ? $_REQUEST['action'] : NULL;
 $html = session_get('html');
+session_store('html', array());
 
 if( !isset($_SESSION['user']) && $mode != "login" )
 {
