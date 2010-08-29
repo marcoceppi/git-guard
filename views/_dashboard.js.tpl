@@ -19,12 +19,12 @@ function update_files(action, content)
 		{
 			var response = transport.responseText || "Could not recieve update.";
 			$(content+'_content').innerHTML = response;
-			hide_loader();
+			hide_loader(content+'_content');
 		},
 		onFailure: function()
 		{
 			alert("Unable to fetch updates.");
-			hide_loader();
+			hide_loader(content+'_content');
 		}
 	});
 }
@@ -50,7 +50,7 @@ function update_logs(start)
 		onFailure: function()
 		{
 			alert("Unable to fetch updates.");
-			hide_loader();
+			hide_loader('history_content');
 		}
 	});
 }
@@ -109,7 +109,7 @@ function execute_action(command)
 				
 				if( command == "commit" || command == "commitall" )
 				{
-					update_log();
+					update_logs(0);
 				}
 			}
 			else
@@ -139,23 +139,47 @@ function show_loader(el)
 		$('loader').style.height = '99%';
 		$('loader').style.top = 0;
 		$('loader').style.left = 0;
+		var loader_name = 'loader';
 	}
 	else
 	{
-		$('loader').style.width = $(el).offsetWidth - 15;
-		$('loader').style.height = $(el).offsetHeight - 15;
-		$('loader').style.top = $(el).offsetTop;
-		$('loader').style.left = $(el).offsetLeft;
+		make_loader(el);
+		
+		$(el+'_loader').style.width = $(el).offsetWidth - 15;
+		$(el+'_loader').style.height = $(el).offsetHeight - 15;
+		$(el+'_loader').style.top = $(el).offsetTop;
+		$(el+'_loader').style.left = $(el).offsetLeft;
+		
+		var loader_name = el+'_loader';
 	}
 	
-	new Effect.Appear('loader', {from:0.0, to:0.5});
+	new Effect.Appear(loader_name, {from:0.0, to:0.5});
 }
 
-function hide_loader()
+function hide_loader(el)
 {
-	new Effect.Fade('loader', {duration:0.3});
+	new Effect.Fade(el+'_loader', {duration:0.3});
 }
 
+function make_loader(el)
+{
+	if( $(el+'_loader') )
+	{
+		// We've been had - the loader alread exists!
+		return true;
+	}
+	else
+	{
+		// We should make one!
+		loaderTPL = $('loader');
+		newLoader = loaderTPL.clone();
+		newLoader.id = el+"_loader";
+		newLoader.innerHTML = loaderTPL.innerHTML;
+		document.body.appendChild(newLoader);
+		
+		return true;
+	}
+}
 	
 //Event.observe(window, 'load', execute_action);
 </script>
