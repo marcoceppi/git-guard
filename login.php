@@ -29,7 +29,7 @@ switch( $action )
 			$auth_request->addExtension($sreg_request);
 		}
 		
-		$attributes[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/contact/email', 2, 1, 'email');
+		$attributes[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/contact/email', 1, 1, 'email');
 		$attributes[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/namePerson/first', 1, 1, 'firstname');
 		$attributes[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/namePerson/last', 1, 1, 'lastname');
 
@@ -125,8 +125,8 @@ switch( $action )
 				
 				if( $ax_resp )
 				{
-					$name = $ax_resp->firstname . " " $ax_resp->lastname;
-					$email = $ax_resp->email;
+					$name = $ax_resp->data['http://axschema.org/namePerson/first'][0] . " " . $ax_resp->data['http://axschema.org/namePerson/last'][0];
+					$email = $ax_resp->data['http://axschema.org/contact/email'][0];
 				}
 				else
 				{
@@ -156,7 +156,7 @@ switch( $action )
 		}
 		else
 		{
-			session_store('html', array('sucess' => $success, 'msg' => $msg ));
+			session_store('html', array('success' => $success, 'msg' => $msg ));
 			session_store('user', $user);
 			header("Location: index.php");
 		}
