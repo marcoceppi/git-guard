@@ -6,6 +6,20 @@ define(GIT_DELETED, " --deleted --killed");
 define(GIT_ADDED, " --others");
 define(GIT_ALL, GIT_MODIFIED . GIT_ADDED . GIT_DELETED);
 
+function git_init( $path )
+{
+	global $config;
+	
+	if( is_writable($path) )
+	{
+		exec("cd $path; " . $config['server']['git'] . " init");
+		
+		return ( is_dir($path . "/.git") ) ? true : false;
+	}
+	
+	return false;
+}		
+
 function git_files( $path, $modes = NULL, $files = NULL )
 {
 	global $config;
