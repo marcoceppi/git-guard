@@ -60,9 +60,6 @@ switch( $action )
 				
 				$files = git_cached($site['path']);
 				array_walk($files, '_cleanFiles');
-
-				git_commit($site['path'], $files, date('Y/m/d-G:i') . " Approved by: " . $user['name']);
-			break;
 			case 'commit':
 				git_commit($site['path'], $files, date('Y/m/d-G:i') . " Approved by: " . $user['name']);
 			break;
