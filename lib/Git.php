@@ -100,3 +100,27 @@ function git_diff( $path, $files )
 	
 	return $output;
 }
+
+function git_state($key)
+{
+	switch( $key )
+	{
+		case '?':
+		case 'N':
+			$state = "new";
+		break;
+		case 'M':
+		case 'C':
+			$state = "modified";
+		break;
+		case 'D':
+		case 'R':
+			$state = "deleted";
+		break;
+		default:
+			$state = "unknown";
+		break;
+	}
+	
+	return $state;
+}

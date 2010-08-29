@@ -2,21 +2,27 @@
 <?php
 foreach($staged as $file)
 {
-	list($state, $path) = explode("\t", $file, 2);
+	list($key, $path) = explode("\t", $file, 2);
+	
+	$state = git_state($key);
 	
 	switch( $state )
 	{
-		case '?':
-		case 'N':
+		case 'new':
 			$class = "green";
 		break;
-		case 'M':
-		case 'C':
+		case 'modified':
 			$class = "orange";
+			
+			if( in_array($path, $del) )
+			{
+				continue 2;
+			}
 		break;
-		case 'D':
-		case 'R':
+		case 'deleted':
 			$class = "red";
+			
+			$del[] = $path;
 		break;
 		default:
 			$class = "";
