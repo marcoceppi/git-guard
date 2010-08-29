@@ -6,7 +6,7 @@ define(GIT_DELETED, " --deleted --killed");
 define(GIT_ADDED, " --others");
 define(GIT_ALL, GIT_MODIFIED . GIT_ADDED . GIT_DELETED);
 
-function git_files( $path, $modes = NULL )
+function git_files( $path, $modes = NULL, $files = NULL )
 {
 	global $config;
 	
@@ -26,9 +26,21 @@ function git_files( $path, $modes = NULL )
 		$mode = "";
 	}
 	
-	exec("cd $path && " . $config['server']['git'] . " ls-files -t " . $mode, $files);
+	if( !is_null($files) )
+	{
+		if( is_array($files) )
+		{
+			$files = implode(" ", $files);
+		}
+	}
+	else
+	{
+		$files = "";
+	}
 	
-	return ( is_array($files) ) ? $files : FALSE;
+	exec("cd $path && " . $config['server']['git'] . " ls-files -t " . $mode . " " . $files, $list);
+	
+	return ( is_array($list) ) ? $list : FALSE;
 }
 
 function git_cached( $path )
@@ -53,12 +65,27 @@ function git_stage( $path, $files )
 {
 	global $config;
 	
-	if( is_array($files) )
-	{
-		$files = implode(" ", $files);
-	}
+	$file_list = git_files($path, GIT_ALL, $files);
 	
-	exec("cd $path && " . $config['server']['git'] . " add $files");
+	if( is_array($file_list) )
+	{
+		foreach( $file_list as $file_info )
+		{
+			list($key, $file_path) = explode(" ", $file_info, 2);
+			
+			$state = git_state($key);
+			
+			switch( $state )
+			{
+				case 'deleted':
+					exec("cd $path && " . $config['server']['git'] . " rm $file_path");
+				break;
+				default:
+					exec("cd $path && " . $config['server']['git'] . " add $file_path");
+				break;
+			}
+		}
+	}
 }
 
 function git_commit( $path, $files, $message )
