@@ -17,10 +17,11 @@ switch( $action )
 					$sql_check = "SELECT `id` FROM `sites` WHERE `path`='$site_path'";
 					$db->sql_query($sql_check);
 					
+					$html['site_path'] = $site_path;
+					$html['site_name'] = $site_name;
+					
 					if( $db->sql_numrows() > 0 )
 					{
-						$html['site_path'] = $site_path;
-						$html['site_name'] = $site_name;
 						$html['error'] = "A site with that path already exists.";
 					}
 					else
