@@ -3,6 +3,7 @@ foreach($files as $file)
 {
 	list($key, $path) = explode(" ", $file, 2);
 	
+	$del = array();
 	$state = git_state($key);
 	
 	switch( $state )
