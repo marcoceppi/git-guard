@@ -17,7 +17,7 @@ switch( $action )
 					$sql_check = "SELECT `id` FROM `sites` WHERE `path`='$site_path'";
 					$db->sql_query($sql_check);
 					
-					if( $db->sql_numrows == 0 )
+					if( $db->sql_numrows() > 0 )
 					{
 						$html['site_path'] = $site_path;
 						$html['site_name'] = $site_name;
