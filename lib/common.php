@@ -6,7 +6,7 @@ ini_set('include_path', dirname(dirname(__FILE__)) . PATH_SEPARATOR . ini_get('i
 require_once("Auth/OpenID/Consumer.php");
 require_once("Auth/OpenID/FileStore.php");
 require_once("Auth/OpenID/SReg.php");
-require_once("Auth/OpenID/PAPE.php");
+require_once("Auth/OpenID/AX.php");
 require_once("Database.php");
 require_once("Git.php");
 require_once("HTML.php");

@@ -28,7 +28,21 @@ switch( $action )
 		{
 			$auth_request->addExtension($sreg_request);
 		}
+		
+		$attributes[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/contact/email', 2, 1, 'email');
+		$attributes[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/namePerson/first', 1, 1, 'firstname');
+		$attributes[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/namePerson/last', 1, 1, 'lastname');
 
+		// Create AX fetch request
+		$ax = new Auth_OpenID_AX_FetchRequest;
+
+		// Add attributes to AX fetch request
+		foreach($attributes as $attribute)
+		{
+				$ax->add($attribute);
+		}
+		
+		$auth_request->addExtension($ax);
 		// Redirect the user to the OpenID server for authentication.
 		// Store the token for this authentication so we can verify the
 		// response.
@@ -107,8 +121,21 @@ switch( $action )
 			else
 			{
 				$sreg_resp = Auth_OpenID_SRegResponse::fromSuccessResponse($response);
-				$sreg = $sreg_resp->contents();
-				$sql = "INSERT INTO `users` (`username`, `email`, `name`, `identity_url`) VALUES ('" . $sreg['nickname'] . "', '" . $sreg['email'] . "', '" . $sreg['fullname'] . "', '$esc_identity')";
+				$ax_resp = Auth_OpenID_AX_FetchResponse::fromSuccessResponse($response);
+				
+				if( $ax_resp )
+				{
+					$name = $ax_resp->firstname . " " $ax_resp->lastname;
+					$email = $ax_resp->email;
+				}
+				else
+				{
+					$sreg = $sreg_resp->contents();
+					$name = $sreg['fullname'];
+					$email = $sreg['email'];
+				}
+				
+				$sql = "INSERT INTO `users` (`username`, `email`, `name`, `identity_url`) VALUES ('" . $sreg['nickname'] . "', '" . $email . "', '" . $name . "', '$esc_identity')";
 				
 				if( !$db->sql_query($sql) )
 				{
@@ -117,6 +144,8 @@ switch( $action )
 				else
 				{
 					$success = "We've done what you wanted all your base is belonged to mai data.";
+					$sql = "SELECT * FROM `users` WHERE `identity_url`='$esc_identity'";
+					$user = $db->sql_fetchrow($db->sql_query($sql));
 				}
 			}		
 		}
