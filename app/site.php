@@ -25,22 +25,29 @@ switch( $action )
 					}
 					else
 					{
-						$sql = "INSERT INTO `sites` (`owner`, `name`, `path`) VALUES (" . $user['user_id'] . ", '" . addslashes($site_name) . "', '$site_path')";
-						if( $db->sql_query($sql) )
+						if( git_init($site_path) )
 						{
-							$q = $db->sql_query("SELECT `site_id` FROM `sites` WHERE `path` = '$site_path'");
-							$site_id = array_shift($db->sql_fetchrow($q));
-							if( $site_id > 0 )
+							$sql = "INSERT INTO `sites` (`owner`, `name`, `path`) VALUES (" . $user['user_id'] . ", '" . addslashes($site_name) . "', '$site_path')";
+							if( $db->sql_query($sql) )
 							{
-								$sql = "INSERT INTO `users_sites` (`user_id`, `site_id`) VALUES ($site_id, " . $user['user_id'] . ")";
-								if( $db->sql_query($sql) )
+								$q = $db->sql_query("SELECT `site_id` FROM `sites` WHERE `path` = '$site_path'");
+								$site_id = array_shift($db->sql_fetchrow($q));
+								if( $site_id > 0 )
 								{
-									session_store('html', array('success' => "Successfully added $site_name"));
-									header("Location: index.php");
+									$sql = "INSERT INTO `users_sites` (`user_id`, `site_id`) VALUES ($site_id, " . $user['user_id'] . ")";
+									if( $db->sql_query($sql) )
+									{
+										session_store('html', array('success' => "Successfully added $site_name"));
+										header("Location: index.php");
+									}
+									else
+									{
+										$html['error'] = "Failed to attach you to your site!";
+									}
 								}
 								else
 								{
-									$html['error'] = "Failed to attach you to your site!";
+									$html['error'] = "Could not insert your site into our database!";
 								}
 							}
 							else
@@ -48,11 +55,12 @@ switch( $action )
 								$html['error'] = "Could not insert your site into our database!";
 							}
 						}
-						else
-						{
-							$html['error'] = "Could not insert your site into our database!";
-						}
 					}
+					else
+					{
+						$html['error'] = "Unable to instanciate a Git Repository at this path.";
+					}
+					
 					build_template("site_new", "Add new site", FALSE, TRUE);
 				}
 			}
