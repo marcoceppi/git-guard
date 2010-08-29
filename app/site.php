@@ -34,7 +34,7 @@ switch( $action )
 								$site_id = array_shift($db->sql_fetchrow($q));
 								if( $site_id > 0 )
 								{
-									$sql = "INSERT INTO `users_sites` (`user_id`, `site_id`) VALUES ($site_id, " . $user['user_id'] . ")";
+									$sql = "INSERT INTO `users_sites` (`site_id`, `user_id`) VALUES ($site_id, " . $user['user_id'] . ")";
 									if( $db->sql_query($sql) )
 									{
 										session_store('html', array('success' => "Successfully added $site_name"));
