@@ -98,6 +98,7 @@ switch( $action )
 		if( $site !== FALSE )
 		{
 			$html['site'] = $site;
+			$html['user'] = $user;
 			$html['files'] = git_files($site['path'], GIT_ALL);
 			$html['staged'] = git_cached($site['path']);
 		}
