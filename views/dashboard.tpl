@@ -11,7 +11,7 @@
 			<?php if(!empty($files)) { include('views/_dashboard_files.tpl'); } ?> &nbsp;
 	  </div>
 	  <div style="float:left;width:370px;" id="stage_content" class="left content">
-			<?php if(!empty($staged)) { include('views/_dashboard_stage.tpl'); } else { echo "<span class=\"small\">There are no staged files</span><br><br>"; } ?> &nbsp;
+			<?php if(!empty($staged)) { include('views/_dashboard_stage.tpl'); } ?> &nbsp;
 	  </div>
 	  <br class="clear">
 	</div>
