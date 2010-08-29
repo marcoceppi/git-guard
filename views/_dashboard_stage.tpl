@@ -7,6 +7,7 @@ foreach($staged as $file)
 	switch( $state )
 	{
 		case '?':
+		case 'N':
 			$class = "green";
 		break;
 		case 'M':
@@ -14,6 +15,7 @@ foreach($staged as $file)
 			$class = "orange";
 		break;
 		case 'D':
+		case 'R':
 			$class = "red";
 		break;
 		default:

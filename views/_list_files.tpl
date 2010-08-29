@@ -11,6 +11,7 @@ foreach($files as $file)
 			$class = "orange";
 		break;
 		case 'D':
+		case 'R':
 			$class = "red";
 		break;
 		default:
