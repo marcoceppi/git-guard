@@ -20,13 +20,13 @@ else
 
 if( !is_null($mode) )
 {
-	if( is_file("$mode.php") )
+	if( is_file("app/$mode.php") )
 	{
 		$html['mode'] = $mode;
 		$html['action'] = $mode;
 		$html['config'] = $config;
 		
-		require_once("$mode.php");
+		require_once("app/$mode.php");
 	}
 	else
 	{
