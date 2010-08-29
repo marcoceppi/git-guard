@@ -45,7 +45,7 @@ function update_logs(start)
 		{
 			var response = transport.responseText || "Could not recieve update.";
 			$('history_content').innerHTML = response;
-			hide_loader();
+			hide_loader('history_content');
 		},
 		onFailure: function()
 		{
