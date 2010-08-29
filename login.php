@@ -143,7 +143,7 @@ switch( $action )
 				}
 				else
 				{
-					$success = "Thanks for registering $name";
+					$success = "Thanks for registering and Welcome $name";
 					$sql = "SELECT * FROM `users` WHERE `identity_url`='$esc_identity'";
 					$user = $db->sql_fetchrow($db->sql_query($sql));
 				}
