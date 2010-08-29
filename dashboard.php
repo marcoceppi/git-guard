@@ -63,7 +63,9 @@ switch( $action )
 				git_stage($site['path'], $files);
 			break;
 			case 'diff':
+				echo "<pre>";
 				print_r(git_diff($site['path'], $files));
+				echo "</pre>";
 			break;
 			case 'checkout':
 				git_checkout($site['path'], $files);
