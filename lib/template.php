@@ -11,7 +11,7 @@ if( !is_simple() && !$is_simple )
 <?php if( is_file($config['server']['path'] . "views/_$mode.css.tpl") ) { include($config['server']['path'] . "views/_$mode.css.tpl"); } ?>
 </head>
 <body>
-<div id="loader" style="display:none;position:absolute;width:1px;height:1px;background-color:#000000;opacity:0.50;"><div id="loader-img" style="position:relative;margin:auto;padding:auto;top:35%"><img src="assets/loader.gif"></div></div>
+<div id="loader" style="display:none;position:absolute;width:1px;height:1px;background-color:#000000;opacity:0.50;"><div id="loader-img" style="position:relative;margin:auto;padding:auto;top:50%;margin-top:-10px;"><img src="assets/loader.gif"></div></div>
 <div id="head"></div>
 <div id="container">
 	<div id="main">
