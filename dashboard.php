@@ -5,9 +5,9 @@ $site = session_get('site');
 
 $html['sites_dropdown'] = new Dropdown("site_select");
 
-foreach( $sites as $site )
+foreach( $sites as $avail_site )
 {
-	$html['sites_dropdown']->add($site['name'], $site['site_id']);
+	$html['sites_dropdown']->add($avail_site['name'], $avail_site['site_id']);
 }
 
 switch( $action )
