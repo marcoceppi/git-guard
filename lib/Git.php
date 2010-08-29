@@ -111,7 +111,7 @@ function git_checkout( $path, $files )
 		$files = implode(" ", $files);
 	}
 	
-	exec("cd $path && " . $config['server']['git'] . " checkout -- $files");
+	exec("cd $path;HOME=/home/4218/users/.home/ " . $config['server']['git'] . " checkout -- $files");
 }
 
 function git_diff( $path, $files )
