@@ -143,7 +143,7 @@ switch( $action )
 				}
 				else
 				{
-					$success = "We've done what you wanted all your base is belonged to mai data.";
+					$success = "Thanks for registering $name";
 					$sql = "SELECT * FROM `users` WHERE `identity_url`='$esc_identity'";
 					$user = $db->sql_fetchrow($db->sql_query($sql));
 				}
@@ -156,7 +156,7 @@ switch( $action )
 		}
 		else
 		{
-			session_store('html', array('sucess' => (( isset($success) ) ? $success : NULL), 'msg' => (( isset($msg) ) ? $msg : NULL)));
+			session_store('html', array('sucess' => $success, 'msg' => $msg ));
 			session_store('user', $user);
 			header("Location: index.php");
 		}
