@@ -55,10 +55,10 @@ switch( $action )
 								$html['error'] = "Could not insert your site into our database!";
 							}
 						}
-					}
-					else
-					{
-						$html['error'] = "Unable to instanciate a Git Repository at this path.";
+						else
+						{
+							$html['error'] = "Unable to instanciate a Git Repository at this path.";
+						}
 					}
 					
 					build_template("site_new", "Add new site", FALSE, TRUE);
