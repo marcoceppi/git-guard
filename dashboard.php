@@ -5,9 +5,16 @@ $site = session_get('site');
 
 $html['sites_dropdown'] = new Dropdown("site_select");
 
-foreach( $sites as $avail_site )
+if( is_array($sites) )
 {
-	$html['sites_dropdown']->add($avail_site['name'], $avail_site['site_id']);
+	foreach( $sites as $avail_site )
+	{
+		$html['sites_dropdown']->add($avail_site['name'], $avail_site['site_id']);
+	}
+}
+else
+{
+	$html['msg'] = "You are currently not assigned to any sites!";
 }
 
 switch( $action )
