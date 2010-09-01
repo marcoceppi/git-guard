@@ -1,5 +1,8 @@
 <span class="small">Files staged for commit</span>
 <?php
+
+$del = array();
+
 foreach($staged as $file)
 {
 	list($key, $path) = explode("\t", $file, 2);
