@@ -52,7 +52,10 @@ function git_files( $path, $modes = NULL, $files = NULL )
 		$files = "";
 	}
 	
-	exec("cd $path && " . $config['server']['git'] . " ls-files -t " . $mode . " " . $files, $list);
+	$exclude = ( is_file($path . "/.gitignore") ) ? " --exclude-from=.gitignore " : " ";
+	
+	
+	exec("cd $path && " . $config['server']['git'] . " ls-files -t " . $mode . $exclude . $files, $list);
 	
 	return ( is_array($list) ) ? $list : FALSE;
 }
