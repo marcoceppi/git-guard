@@ -11,7 +11,9 @@ switch( $action )
 			$html['error'] = "Expected an OpenID URL.";
 			build_template("login", "Login Failed", false, true);
 		}
-
+		
+		setcookie('openid_identity', $openid, time()+60*60*24*30);
+		
 		// Begin the OpenID authentication process.
 		$auth_request = $consumer->begin($openid);
 
@@ -163,6 +165,7 @@ switch( $action )
 
 	break;
 	default:
+		$html['ourl'] = $_COOKIE['openid_identity'];
 		build_template("login", "Login");
 	break;
 }

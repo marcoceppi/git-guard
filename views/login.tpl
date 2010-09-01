@@ -5,7 +5,7 @@
 		OpenID URL:
 		<input type="hidden" name="action" value="try" />
 		<input type="hidden" name="mode" value="login" />
-		<input type="text" name="openid_identifier" value="http://core.theo.danya.com/" />
+		<input type="text" name="openid_identifier" value="<?= $ourl; ?>" />
 		<br />
 		<input type="submit" value="Login" />
 	  </form>
